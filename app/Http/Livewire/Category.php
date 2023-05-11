@@ -40,6 +40,29 @@ class Category extends Component
         $this->description = "";
     }
 
+    public function edit($id){
+        $category = Categories::findOrFail($id);
+        $this->name = $category->name;
+        $this->description = $category->description;
+        $this->category_id = $category->id;
+        $this->updateCategory = true;
+    }
+
+    public function update() {
+
+         $this->validate();
+         try{
+             Categories::find($this->category_id)->fill([
+                 'name'=>$this->name,
+                 'description'=>$this->description
+             ])->save();
+             session()->flash('success','Category Updated Successfully!!');
+     
+         }catch(\Exception $e){
+             session()->flash('error','Something goes wrong while updating category!!');
+         }
+    }
+
     public function render()
     {
         $this->categories = Categories::select('id','name','description')->get();

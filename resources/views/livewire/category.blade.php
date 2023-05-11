@@ -12,7 +12,11 @@
                         {{ session()->get('error') }}
                     </div>
                 @endif
+                @if($updateCategory)
+                    @include('livewire.update')
+                @else
                     @include('livewire.create')
+                @endif
             </div>
         </div>
     </div>
@@ -40,7 +44,7 @@
                                             {{$category->description}}
                                         </td>
                                         <td>
-                                            <button class="btn btn-primary btn-sm">Edit</button>
+                                            <button wire:click="edit({{$category->id}})" class="btn btn-primary btn-sm">Edit</button>
                                             <button class="btn btn-danger btn-sm">Delete</button>
                                         </td>
                                     </tr>
