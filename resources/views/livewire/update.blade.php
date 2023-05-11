@@ -12,6 +12,6 @@
     </div>
     <div class="d-grid gap-2">
         <button wire:click.prevent="update()" class="btn btn-success btn-block">Save</button>
-        <button class="btn btn-danger">Cancel</button>
+        <button wire:click.prevent="cancel()" class="btn btn-danger">Cancel</button>
     </div>
 </form>

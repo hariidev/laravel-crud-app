@@ -63,6 +63,12 @@ class Category extends Component
          }
     }
 
+    public function cancel() {
+
+        $this->updateCategory = false;
+        $this->resetFields();
+    }
+
     public function render()
     {
         $this->categories = Categories::select('id','name','description')->get();
