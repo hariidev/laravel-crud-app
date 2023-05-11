@@ -42,6 +42,7 @@ class Category extends Component
 
     public function render()
     {
+        $this->categories = Categories::select('id','name','description')->get();
         return view('livewire.category');
     }
 }
