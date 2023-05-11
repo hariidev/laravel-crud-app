@@ -69,6 +69,15 @@ class Category extends Component
         $this->resetFields();
     }
 
+    public function destroy($id){
+        try{
+            Categories::find($id)->delete();
+            session()->flash('success',"Category Deleted Successfully!!");
+        }catch(\Exception $e){
+            session()->flash('error',"Something goes wrong while deleting category!!");
+        }
+    }
+
     public function render()
     {
         $this->categories = Categories::select('id','name','description')->get();
